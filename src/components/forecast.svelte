@@ -126,4 +126,44 @@
 		font-size: 0.5em;
 		font-weight: 400;
 	}
+
+	@media only screen and (min-width: 1280px) {
+		article {
+			padding: 32px;
+			width: 480px;
+			border-radius: 20px;
+		}
+		article header {
+			gap: 22px;
+		}
+		article header button {
+			font-size: 1em;
+		}
+
+		article section {
+			gap: 32px;
+		}
+		article section::-webkit-scrollbar {
+			height: 8px;
+		}
+		article section::-webkit-scrollbar-thumb {
+			border-radius: 16px;
+		}
+		article section div {
+			padding: 16px 0;
+		}
+		article section div h5 {
+			font-size: 1em;
+		}
+		article section div img {
+			height: 42px;
+		}
+		article section div h4 {
+			font-size: 1.2em;
+		}
+		article section div p {
+			max-width: 80px;
+			font-size: 0.7em;
+		}
+	}
 </style>

@@ -39,7 +39,7 @@
 			<p>UV : <span>{weather.uv}</span></p>
 		</section>
 		<aside>
-			<p>Feels like : <span>{weather.feelsLike}</span>ºC</p>
+			<p>Feels like : <span>{weather.feelsLike}</span> ºC</p>
 			<p>Pressure : <span>{weather.pressure}</span> in</p>
 			<p>Precipitation : <span>{weather.precipitation}</span> mm</p>
 		</aside>
@@ -141,5 +141,44 @@
 		color: #000000;
 		font-size: 1.2em;
 		font-weight: 700;
+	}
+
+	@media only screen and (min-width: 1280px) {
+		article {
+			padding: 32px;
+			width: 480px;
+			gap: 36px;
+			border-radius: 20px;
+		}
+		article header section h3 {
+			font-size: 1.4em;
+			gap: 8px;
+		}
+		article header section h3 svg {
+			width: 20px;
+			height: 20px;
+		}
+		article header section h2 {
+			font-size: 4.2em;
+		}
+		article header section h2 span,
+		article header section p {
+			font-size: 1em;
+		}
+		article header aside img {
+			width: 160px;
+		}
+
+		article footer section,
+		article footer aside {
+			gap: 6px;
+		}
+		article footer p {
+			margin-bottom: 6px;
+			font-size: 1em;
+		}
+		article footer p span {
+			font-size: 1.4em;
+		}
 	}
 </style>

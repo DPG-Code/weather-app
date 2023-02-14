@@ -34,4 +34,21 @@
 		font-size: 1.2em;
 		font-weight: 400;
 	}
+
+	@media only screen and (min-width: 1280px) {
+		article {
+			width: 480px;
+		}
+		article section {
+			gap: 16px;
+		}
+		article section p {
+			padding: 16px 10px;
+			font-size: 0.8em;
+			border-radius: 20px;
+		}
+		article section p span {
+			font-size: 1.4em;
+		}
+	}
 </style>

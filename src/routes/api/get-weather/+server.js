@@ -1,6 +1,20 @@
 import { options } from '../options'
 
 const daysWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+const months = [
+	'January',
+	'February',
+	'February',
+	'March',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'Octuber',
+	'November',
+	'December'
+]
 
 export async function GET(event) {
 	const { searchParams } = event.url
@@ -15,10 +29,9 @@ export async function GET(event) {
 
 	const { name, region, country, localtime } = location
 	const format = new Date(localtime)
-	const currentDate = `${daysWeek[format.getDay() - 1]} ${format.getDate()} ${localtime.slice(
-		11,
-		localtime.length
-	)}`
+	const currentDate = `${daysWeek[format.getDay() - 1]} ${format.getDate()} ${
+		months[format.getDay() - 1]
+	}`
 	const { temp_c, is_day, wind_kph, condition, humidity, feelslike_c, uv, pressure_in, precip_mm } =
 		current
 

@@ -59,13 +59,13 @@
 	}
 
 	main {
+		padding-top: 32px;
 		width: 100%;
-		height: 100vh;
-		min-height: 550px;
+		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		justify-content: start;
 		gap: 12px;
 		background: linear-gradient(180deg, var(--main-color), var(--second-color));
 	}
@@ -115,5 +115,30 @@
 		color: var(--second-white);
 		font-size: 0.8em;
 		font-weight: 500;
+	}
+
+	@media only screen and (min-width: 1280px) {
+		main {
+			padding: 32px 0;
+			gap: 32px;
+		}
+		form {
+			width: 480px;
+		}
+		form input {
+			padding: 8px 20px;
+			border-radius: 16px;
+		}
+		form button {
+			right: 20px;
+		}
+		form button svg {
+			width: 18px;
+			height: 18px;
+		}
+
+		h2 {
+			font-size: 1.2em;
+		}
 	}
 </style>
