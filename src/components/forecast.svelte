@@ -50,13 +50,11 @@
 
 <style>
 	article {
-		padding: 20px;
-		width: 280px;
+		width: 100%;
+    max-width: 360px;
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
-		background-color: #ffffff2c;
-		border-radius: 16px;
 	}
 	article header {
 		width: 100%;
@@ -66,49 +64,60 @@
 		gap: 12px;
 	}
 	article header button {
-		color: #ffffff7c;
-		font-size: 0.7em;
-		font-weight: 600;
-		background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    padding: 6px 22px;
+    font-size: 0.6em;
+		font-weight: 500;
+    background-color: #ffffff0c;
+		color: var(--white-tenue-color);
 		border: none;
+    border-radius: 12px;
 		cursor: pointer;
 	}
 	.active {
-		transition: all 0.5s ease-in-out;
-		color: #ffffff;
+    transition: all 0.5s ease-in-out;
+		color: #000000;
+    background-color: #ffffff;
 	}
 
 	article section {
+    padding-bottom: 12px;
 		width: 100%;
 		display: flex;
-		gap: 24px;
+		gap: 12px;
 		overflow-x: scroll;
+    position: relative;
 	}
 	article section::-webkit-scrollbar {
-		height: 6px;
+    height: 6px;
 	}
+  article section::-webkit-scrollbar-track {
+    background: var(--bg-main-color);
+  }
 	article section::-webkit-scrollbar-thumb {
-		background: #ffffff3c;
+    background: #ffffff3c;
 		border-radius: 12px;
 	}
 	article section::-webkit-scrollbar-thumb:hover {
 		background: #ffffff7c;
 	}
 	article section div {
+    min-width: 76px;
 		padding: 12px 0;
+    background-color: #ffffff0c;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+    border-radius: 16px;
 		gap: 4px;
 	}
 	article section div h5 {
-		color: #ffffff;
-		font-size: 0.7em;
-		font-weight: 500;
+		color: var(--white-tenue-color);
+		font-size: 0.6em;
+		font-weight: 400;
 	}
 	article section div img {
-		margin: 10px 0;
 		height: 24px;
 	}
 	article section div h4 {
@@ -122,48 +131,53 @@
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		color: #ffffff9c;
-		font-size: 0.5em;
+		color: var(--white-tenue-color);
+		font-size: 0.6em;
 		font-weight: 400;
 	}
 
 	@media only screen and (min-width: 1280px) {
 		article {
-			padding: 32px;
-			width: 480px;
-			border-radius: 20px;
+			max-width: 620px;
+      gap: 32px;
 		}
 		article header {
-			gap: 22px;
-		}
-		article header button {
-			font-size: 1em;
-		}
+      gap: 24px;
+    }
+    article header button {
+      padding: 12px 36px;
+      font-size: 1.4em;
+      border-radius: 22px;
+    }
 
 		article section {
-			gap: 32px;
+      padding-bottom: 16px;
+			gap: 24px;
 		}
-		article section::-webkit-scrollbar {
-			height: 8px;
-		}
-		article section::-webkit-scrollbar-thumb {
-			border-radius: 16px;
-		}
-		article section div {
-			padding: 16px 0;
-		}
-		article section div h5 {
-			font-size: 1em;
-		}
-		article section div img {
-			height: 42px;
-		}
-		article section div h4 {
-			font-size: 1.2em;
-		}
-		article section div p {
-			max-width: 80px;
-			font-size: 0.7em;
-		}
+    article section::-webkit-scrollbar {
+      height: 12px;
+    }
+    article section::-webkit-scrollbar-thumb {
+      border-radius: 16px;
+    }
+    article section div {
+      min-width: 156px;
+      padding: 16px 0;
+      border-radius: 26px;
+      gap: 8px;
+    }
+    article section div h5 {
+      font-size: 1.2em;
+    }
+    article section div img {
+      height: 72px;
+    }
+    article section div h4 {
+      font-size: 1.8em;
+    }
+    article section div p {
+      max-width: 72px;
+      font-size: 1.2em;
+    }
 	}
 </style>

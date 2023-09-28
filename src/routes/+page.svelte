@@ -1,8 +1,9 @@
 <script>
 	import { getWeatherFrom } from '../services/weather.js'
-	import Weather from '../components/weather.svelte'
-	import Forecast from '../components/forecast.svelte'
-	import Astro from '../components/astro.svelte'
+	import Weather from '../components/Weather.svelte'
+	import Forecast from '../components/Forecast.svelte'
+	import Astro from '../components/Astro.svelte'
+	import FavoritesLink from '../components/FavoritesLink.svelte'
 
 	let weatherPromise = getWeatherFrom()
 	let query = ''
@@ -25,9 +26,9 @@
 </svelte:head>
 
 {#await weatherPromise then weather}
-	<main class={weather.weather.isDay !== 1 && 'themeNight'}>
+	<main>
 		<form on:submit|preventDefault={handleSubmit}>
-			<input type="text" on:change={handleChange} value={query} required placeholder="Search..." />
+			<input type="text" on:change={handleChange} value={query} required placeholder="Location..." />
 			<button type="submit"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -44,53 +45,75 @@
 				</svg>
 			</button>
 		</form>
-		<h2>{weather.weather.currentDate}</h2>
-		<Weather weather={weather.weather} />
-		<Forecast forecast={weather.forecast} />
-		<Astro astro={weather.forecast[0].astro} />
+    <div class="weather">
+      <Weather weather={weather.weather} />
+      <div class="forecast">
+        <Forecast forecast={weather.forecast} />
+        <Astro astro={weather.forecast[0].astro} />
+      </div>
+    </div>
+    <FavoritesLink />
 	</main>
 {/await}
 
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 	:global(body) {
-		font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 	}
 
 	main {
-		padding-top: 32px;
+		padding: 32px;
 		width: 100%;
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: start;
-		gap: 12px;
-		background: linear-gradient(180deg, var(--main-color), var(--second-color));
-	}
-	.themeNight {
-		background: linear-gradient(180deg, var(--main-night-color), var(--second-night-color));
+    background-color: var(--bg-main-color);
+    background-image:  linear-gradient(#ffffff04 1px, transparent 1px), linear-gradient(to right, #ffffff04 1px, var(--bg-main-color) 1px);
+    background-size: 20px 20px;
+		gap: 24px;
+    position: relative;
 	}
 
+  main::before{
+    content: "";
+    width: 320px;
+    height: 320px;
+    background: linear-gradient(125deg,rgb(0, 128, 251, 35%) 5%,rgb(0, 128, 251, 10%) 25%,rgb(0, 128, 251, 2%) 100%);
+    filter: blur(75px);
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: 1;
+  }
+
 	form {
-		width: 280px;
+		width: 100%;
+    max-width: 360px;
 		display: flex;
 		position: relative;
 		align-items: center;
+    z-index: 50;
 	}
 	form input {
-		padding: 6px 16px;
+    font-family: 'Montserrat', sans-serif;
+		padding: 8px 24px;
 		width: 100%;
 		color: #ffffff;
-		font-weight: 600;
-		background-color: transparent;
-		border: 2px solid #ffffff3c;
-		border-radius: 12px;
+    font-size: 1em;
+		font-weight: 400;
+		background-color: #ffffff0c;
+		border: none;
+		border-radius: 16px;
 		outline: none;
 	}
 	form input::placeholder {
-		color: #ffffff7c;
+		color: var(--white-tenue-color);
 	}
 	form button {
 		height: 100%;
@@ -98,7 +121,7 @@
 		background-color: transparent;
 		border: none;
 		position: absolute;
-		right: 16px;
+		right: 24px;
 		cursor: pointer;
 	}
 	form button svg {
@@ -111,34 +134,62 @@
 		stroke: #ffffff;
 	}
 
-	h2 {
-		color: var(--second-white);
-		font-size: 0.8em;
-		font-weight: 500;
-	}
+  .weather {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+    align-items: center;
+    justify-content: center;
+		gap: 24px;
+    z-index: 50;
+  }
+
+  .forecast {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+    align-items: center;
+    justify-content: center;
+		gap: 24px;
+  }
 
 	@media only screen and (min-width: 1280px) {
 		main {
-			padding: 32px 0;
-			gap: 32px;
+			padding-top: 86px;
+			padding-bottom: 86px;
+			gap: 36px;
 		}
+    main::before{
+      width: 720px;
+      height: 720px;
+    }
 		form {
-			width: 480px;
+			max-width: 620px;
 		}
 		form input {
-			padding: 8px 20px;
-			border-radius: 16px;
+			padding: 14px 36px;
+      font-size: 1.6em;
+      border-radius: 28px;
 		}
 		form button {
-			right: 20px;
+			right: 36px;
 		}
 		form button svg {
-			width: 18px;
-			height: 18px;
+			width: 26px;
+			height: 26px;
 		}
-
-		h2 {
-			font-size: 1.2em;
-		}
+    .weather {
+      margin-top: 32px;
+      gap: 52px;
+    }
+    .forecast {
+      width: auto;
+      gap: 72px;
+    }
+	}
+  @media only screen and (min-width: 1560px) {
+    .weather {
+      flex-direction: row;
+    }
 	}
 </style>

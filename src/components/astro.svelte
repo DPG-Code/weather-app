@@ -11,44 +11,41 @@
 
 <style>
 	article {
-		width: 280px;
+		width: 100%;
+    max-width: 360px;
 		display: flex;
 	}
 	article section {
 		width: 100%;
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 12px;
+		gap: 16px;
 	}
 	article section p {
-		padding: 12px 8px;
+		padding: 12px;
 		text-align: center;
-		color: #ffffff9c;
-		font-size: 0.6em;
-		font-weight: 300;
-		background-color: #ffffff2c;
-		border-radius: 16px;
+		color: var(--white-tenue-color);
+		font-size: 0.7em;
+		font-weight: 400;
+		background-color: #ffffff0c;
+		border-radius: 20px;
 	}
 	article section p span {
 		color: #ffffff;
-		font-size: 1.2em;
-		font-weight: 400;
+		font-weight: 500;
 	}
 
 	@media only screen and (min-width: 1280px) {
 		article {
-			width: 480px;
+			max-width: 620px;
 		}
 		article section {
-			gap: 16px;
+			gap: 36px;
 		}
 		article section p {
-			padding: 16px 10px;
-			font-size: 0.8em;
-			border-radius: 20px;
-		}
-		article section p span {
+			padding: 22px;
 			font-size: 1.4em;
+			border-radius: 32px;
 		}
 	}
 </style>
