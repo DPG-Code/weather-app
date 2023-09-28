@@ -1,11 +1,11 @@
 <script>
-	import HeartAdd from "./icons/HeartAdd.svelte"
+	import Trash from "./icons/Trash.svelte"
 
-  export let addToFavorites
+  export let removeFromFavorites
 </script>
 
-<button on:click={addToFavorites}>
-  <HeartAdd />
+<button on:click={removeFromFavorites}>
+  <Trash />
 </button>
 
 <style>

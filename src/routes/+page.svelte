@@ -18,6 +18,7 @@
 
 	const handleChange = (e) => {
 		query = e.target.value
+    location = query
 	}
 </script>
 

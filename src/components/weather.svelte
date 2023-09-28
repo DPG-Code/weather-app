@@ -1,6 +1,9 @@
 <script>
 	import getIcon from './icons'
+
 	import AddFavoritesButton from './AddFavoritesButton.svelte'
+	import RemoveFavoriteButton from './RemoveFavoriteButton.svelte'
+
 	import Location from '../components/icons/Location.svelte'
 	import Humidity from '../components/icons/weather/Humidity.svelte'
 	import Wind from '../components/icons/weather/Wind.svelte'
@@ -8,11 +11,34 @@
 	import Temperature from '../components/icons/weather/Temperature.svelte'
 	import Pressure from '../components/icons/weather/Pressure.svelte'
 	import Precipitation from '../components/icons/weather/Precipitation.svelte'
+
 	export let weather = {}
+  let favorites = JSON.parse(localStorage.getItem('favorites'))
+  let isFavorite = favorites.includes(weather.location)
+
+  const addToFavorites = () => {
+    if (!isFavorite) {
+      favorites.push(weather.location);
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      isFavorite = true;
+    }
+  }
+
+  const removeFromFavorites = () => {
+    if (isFavorite) {
+      favorites = favorites.filter((location) => location !== weather.location);
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      isFavorite = false;
+    }
+  }
 </script>
 
 <article class={weather.isDay !== 1 && 'themeNight'}>
-  <AddFavoritesButton location={weather.location}/>
+  {#if isFavorite}
+		<RemoveFavoriteButton removeFromFavorites={removeFromFavorites} />
+	{:else}
+		<AddFavoritesButton addToFavorites={addToFavorites} />
+	{/if}
   <h3>
     <Location />
     {weather.location}

@@ -1,6 +1,24 @@
 <script>
 	import FavoriteItem from "../../components/FavoriteItem.svelte"
   import HomeLink from "../../components/HomeLink.svelte"
+	import Clear from "../../components/icons/Clear.svelte"
+	import Empty from "../../components/icons/Empty.svelte"
+
+  let favorites = JSON.parse(localStorage.getItem('favorites'))
+
+  const deleteItem = (locationToDelete) => {
+    if (favorites && favorites.length > 0) {
+      favorites = favorites.filter((location) => location !== locationToDelete)
+      localStorage.setItem('favorites', JSON.stringify(favorites))
+    }
+  }
+
+  const deleteAllItems = () => {
+    if (favorites && favorites.length > 0) {
+      favorites = []
+      localStorage.setItem('favorites', JSON.stringify(favorites))
+    }
+  }
 </script>
 
 <svelte:head>
@@ -10,7 +28,17 @@
 <main>
   <h2>Favorites</h2>
   <section>
-    <FavoriteItem location='madrid'/>
+    {#if favorites !== null && favorites.length > 0}
+      {#each favorites as location, i}
+        <FavoriteItem location={location} deleteItem={deleteItem}/>
+      {/each}
+      <button class="clear-all" on:click={deleteAllItems}><Clear /></button>
+    {:else}
+    <p>
+      Add your favorite locations!
+      <Empty />
+    </p>
+    {/if}
   </section>
   <HomeLink />
 </main>
@@ -61,6 +89,32 @@
     z-index: 50;
   }
 
+  main section p{
+    margin-top: 36px;
+    display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+    gap: 12px;
+    color: var(--white-tenue-color);
+		font-size: 1em;
+		font-weight: 600;
+    z-index: 50;
+  }
+  :global(.add-favorites){
+    width: 32px;
+    height: 32px;
+  }
+  .clear-all{
+    margin-top: 36px;
+    width: 32px;
+    height: 32px;
+    color: var(--white-color);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
   @media only screen and (min-width: 1280px) {
     main {
       padding-top: 86px;
@@ -77,6 +131,19 @@
     main section {
       max-width: 960px;
       gap: 12px;
+    }
+    main section p{
+      margin-top: 72px;
+      gap: 16px;
+      font-size: 2em;
+    }
+    :global(.add-favorites){
+      width: 56px;
+      height: 56px;
+    }
+    .clear-all{
+      width: 56px;
+      height: 56px;
     }
   }
 </style>
