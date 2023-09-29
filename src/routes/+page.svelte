@@ -1,6 +1,8 @@
 <script>
+	import { onMount } from 'svelte'
 	import { getWeatherFrom } from '../services/weather.js'
-	import Weather from '../components/Weather.svelte'
+
+  import Weather from '../components/Weather.svelte'
 	import Forecast from '../components/Forecast.svelte'
 	import Astro from '../components/Astro.svelte'
 	import FavoritesLink from '../components/FavoritesLink.svelte'
@@ -8,18 +10,30 @@
 	let weatherPromise = getWeatherFrom()
 	let query = ''
 	let location = 'Madrid'
+  let isFavorite = false
+
+  const updateIsFavorite = () => {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || []
+    isFavorite = favorites.includes(location)
+  }
 
 	const handleSubmit = () => {
 		getWeatherFrom(query).then((res) => {
-			weatherPromise = res
-			location = res.weather.location
+			if (res && res.weather && res.weather.location) {
+        weatherPromise = res
+				location = res.weather.location
+        updateIsFavorite()
+			}
 		})
 	}
 
 	const handleChange = (e) => {
 		query = e.target.value
-    location = query
 	}
+
+  onMount(() => {
+    updateIsFavorite()
+  })
 </script>
 
 <svelte:head>
@@ -47,7 +61,7 @@
 			</button>
 		</form>
     <div class="weather">
-      <Weather weather={weather.weather} />
+      <Weather isFavorite={isFavorite} weather={weather.weather} />
       <div class="forecast">
         <Forecast forecast={weather.forecast} />
         <Astro astro={weather.forecast[0].astro} />

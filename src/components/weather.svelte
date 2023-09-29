@@ -13,8 +13,9 @@
 	import Precipitation from '../components/icons/weather/Precipitation.svelte'
 
 	export let weather = {}
+  export let isFavorite
+  
   let favorites = JSON.parse(localStorage.getItem('favorites'))
-  let isFavorite = favorites.includes(weather.location)
 
   const addToFavorites = () => {
     if (!isFavorite) {
@@ -26,7 +27,7 @@
 
   const removeFromFavorites = () => {
     if (isFavorite) {
-      favorites = favorites.filter((location) => location !== weather.location);
+      favorites = favorites.filter((favLocation) => favLocation !== weather.location);
       localStorage.setItem('favorites', JSON.stringify(favorites));
       isFavorite = false;
     }
