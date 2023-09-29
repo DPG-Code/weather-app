@@ -1,16 +1,16 @@
 <script>
-	import getIcon from './icons'
+	import getIcon from './icons/icons'
 
-	import AddFavoritesButton from './AddFavoritesButton.svelte'
-	import RemoveFavoriteButton from './RemoveFavoriteButton.svelte'
+	import AddFavoritesButton from './buttons/AddFavoritesButton.svelte'
+	import RemoveFavoriteButton from './buttons/RemoveFavoriteButton.svelte'
 
-	import Location from '../components/icons/Location.svelte'
-	import Humidity from '../components/icons/weather/Humidity.svelte'
-	import Wind from '../components/icons/weather/Wind.svelte'
-	import Uv from '../components/icons/weather/Uv.svelte'
-	import Temperature from '../components/icons/weather/Temperature.svelte'
-	import Pressure from '../components/icons/weather/Pressure.svelte'
-	import Precipitation from '../components/icons/weather/Precipitation.svelte'
+	import Location from './icons/Location.svelte'
+	import Humidity from './icons/weather/Humidity.svelte'
+	import Wind from './icons/weather/Wind.svelte'
+	import Uv from './icons/weather/Uv.svelte'
+	import Temperature from './icons/weather/Temperature.svelte'
+	import Pressure from './icons/weather/Pressure.svelte'
+	import Precipitation from './icons/weather/Precipitation.svelte'
 
 	export let weather = {}
   export let isFavorite

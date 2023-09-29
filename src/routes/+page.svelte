@@ -2,10 +2,10 @@
 	import { onMount } from 'svelte'
 	import { getWeatherFrom } from '../services/weather.js'
 
-  import Weather from '../components/Weather.svelte'
-	import Forecast from '../components/Forecast.svelte'
-	import Astro from '../components/Astro.svelte'
-	import FavoritesLink from '../components/FavoritesLink.svelte'
+  import Weather from '../components/WeatherDetails.svelte'
+	import Forecast from '../components/ForecastDetails.svelte'
+	import Astro from '../components/AstroDetails.svelte'
+	import FavoritesLink from '../components/buttons/FavoritesLink.svelte'
 
 	let weatherPromise = getWeatherFrom()
 	let query = ''

@@ -1,9 +1,9 @@
 <script>
-  import Heart from "./icons/Heart.svelte";
+	import Home from "../icons/Home.svelte"
 </script>
 
-<a href="/favorites">
-  <Heart />
+<a href="/">
+  <Home />
 </a>
 
 <style>

@@ -1,6 +1,6 @@
 <script>
-  import Open from '../components/icons/Open.svelte'
-  import X from '../components/icons/X.svelte'
+  import Open from '../icons/Open.svelte'
+  import X from '../icons/X.svelte'
 
   export let location
   export let deleteItem

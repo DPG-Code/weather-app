@@ -1,5 +1,5 @@
 <script>
-	import getIcon from './icons'
+	import getIcon from './icons/icons'
 	export let forecast = {}
 	$: day = forecast[0]
 
@@ -92,7 +92,7 @@
     height: 6px;
 	}
   article section::-webkit-scrollbar-track {
-    background: var(--bg-main-color);
+    background: #0c0c0c00;
   }
 	article section::-webkit-scrollbar-thumb {
     background: #ffffff3c;

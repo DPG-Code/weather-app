@@ -1,6 +1,6 @@
 <script>
-	import FavoriteItem from "../../components/FavoriteItem.svelte"
-  import HomeLink from "../../components/HomeLink.svelte"
+	import FavoriteItem from "../../components/buttons/FavoriteItem.svelte"
+  import HomeLink from "../../components/buttons/HomeLink.svelte"
 	import Clear from "../../components/icons/Clear.svelte"
 	import Empty from "../../components/icons/Empty.svelte"
 
