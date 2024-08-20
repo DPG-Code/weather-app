@@ -23,13 +23,13 @@
 
 </div>
 
-### 🛠️ Stack
+## 🛠️ Stack
 
 - **Svelte**
 - **Svelte Kit**
 - **Playwright**
 
-### 🚀 Getting Started
+## 🚀 Getting Started
 
 ```bash
 npm run dev
