@@ -15,7 +15,7 @@
 <p></p>
 </div>
 
-![React.js Badge](https://img.shields.io/badge/Svelte-FF3E00?logo=svelte&logoColor=fff&style=flat)
+![Svelte Badge](https://img.shields.io/badge/Svelte-FF3E00?logo=svelte&logoColor=fff&style=flat)
 ![GitHub stars](https://img.shields.io/github/stars/Dpg-Code/weather-app)
 ![GitHub forks](https://img.shields.io/github/forks/Dpg-Code/weather-app)
 ![GitHub PRs](https://img.shields.io/github/issues-pr/Dpg-Code/weather-app)
